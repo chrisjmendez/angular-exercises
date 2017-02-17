@@ -1,0 +1,40 @@
+<h1>{{title}}</h1>
+
+<h2>Example - Event Handlers</h2>
+<div [style.textColor]="color">
+  It works {{name}}!
+</div>
+<br>
+<button (click)="onClickHandler()">Change Text Color</button>
+
+
+
+<h2>Example: Two-way Binding (Old School)</h2>
+<h3>Text will change once "Enter" has been selected</h3>
+<input type="text" [value]="name" (keyup.enter)="name = $event.target.value">
+
+
+
+<h2>Example: Two-way Binding (New School)</h2>
+<h3>Text will change on keychange.</h3>
+<input type="text" [(ngModel)]="name">
+
+
+
+<h2>Example: Inline Template Loop</h2>
+<ul>
+  <li *ngFor="let c of customers">
+    <app-customer [customer]="c"></app-customer>
+  </li>
+</ul>
+
+
+
+<h2>Example: Simple Loop</h2>
+<ul>
+  <li *ngFor="let c of customers">
+    <span [style.color]="thisColor">{{c.id}}</span>
+    <span>{{c.first}}</span>
+    <span>{{c.last}}</span>
+  </li>
+</ul>

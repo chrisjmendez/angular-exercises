@@ -5,8 +5,46 @@ Based on this [Angular Tutorial](https://angular.io/docs/ts/latest/tutorial/toh-
 
 This examples shows you how to:
 
+1. Create a simple angular app
+2. Create a component for your app including an html template and css template
+3. Create a forLoop within the Angular framework
+4. Create models
+5. Create a service that simulates a request to a server
+6. 
 
-Models
+
+---
+
+## UIX
+
+We install Bootstrap 4 using a single command line:
+
+### Step 1
+```language-powerbash
+npm install --save @ng-bootstrap/ng-bootstrap
+```
+*[Source](https://ng-bootstrap.github.io/#/getting-started)*
+
+### Step 2
+
+
+### Step 3
+
+```language-javascript
+@NgModule({
+  declarations: [
+    AppComponent, ...
+  ],
+  imports: [
+	NgbModule,
+    BrowserModule, ...
+  ]
+  ...
+```
+
+
+
+## Models
 
 You can create a class using the command-line generator:
 ```language-javascript
@@ -14,7 +52,7 @@ ng g class classes/hero
 ```
 
 
-Components
+## Components
 
 * You can create components using the command-line generator:
 
@@ -22,7 +60,7 @@ Components
 ng g component hero-detail/hero-detail
 ```
 
-Services
+## Services
 
 You can create a service using the command-line generator:
 
@@ -31,14 +69,17 @@ ng g service services/hero
 ```
 
 
-Routing
+## Routing
 
 * 
 
 
+
+---
 
 
 # Resources
 
 * [Anatomy of an Angular 2 App](http://www.chrisjmendez.com/2016/12/21/anatomy-of-an-angular-2-app/)
 * [Angular 2 Command Line](https://cli.angular.io/)
+* [Bootstrap 4 Examples](https://v4-alpha.getbootstrap.com/components/buttons/)

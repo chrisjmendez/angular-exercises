@@ -1,13 +1,11 @@
 <div *ngIf="hero">
   <h2>
-    {{title}} details!
-  </h2>
-  <div>
-    <label>id: </label>
-    {{hero.id}}
-  </div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name">
+	 Hero
+  </h2>  
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon" id="sizing-addon1">
+    <label>{{hero.id}}</label> 
+	</span>
+    <input type="text" class="form-control" [(ngModel)]="hero.name" placeholder="Name" aria-describedby="sizing-addon1">
   </div>
 </div>

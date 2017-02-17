@@ -21,15 +21,11 @@ export class AppComponent implements OnInit {
 	ngOnInit():void { 
 		//Data Services
 		this.getHeroes();
-		//First selected item
-		
-//		this.selectedHero = this.heroes[0]
 	}  
 
 	getHeroes():void{
 		//Once data is retreived, assign it to "heroes"
 		this.heroService.getDataSlowly().then(heroes => this.heroes = heroes);
-		console.log(this.heroes);
 	}
 	
 	onSelect(hero: Hero):void {

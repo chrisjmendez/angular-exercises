@@ -27,9 +27,6 @@ npm install --save @ng-bootstrap/ng-bootstrap
 
 ### Step 2
 
-
-### Step 3
-
 ```language-javascript
 @NgModule({
   declarations: [
@@ -42,6 +39,19 @@ npm install --save @ng-bootstrap/ng-bootstrap
   ...
 ```
 
+### Step 3
+
+Add this CSS tag to ```index.html```
+
+```language-javascript
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+```
+
+### Step 4
+
+Get going!
+
+* [Bootstrap 4 Examples](https://v4-alpha.getbootstrap.com/components/buttons/)
 
 
 ## Models

@@ -3,16 +3,26 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule }   from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-import { HeroesComponent } from './heroes/heroes.component';
+import { HeroService }         from './services/hero.service';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component'
+import { HeroesComponent } from './heroes/heroes.component';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ 
-        FormsModule 
+		NgbModule,
+		FormsModule,
+		RouterModule.forRoot([
+			{
+				path: 'heroes',
+				component: HeroesComponent
+			}
+		])
       ],
       declarations: [
         AppComponent,

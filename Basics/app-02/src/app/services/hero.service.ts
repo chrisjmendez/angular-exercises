@@ -9,6 +9,8 @@ import { Hero } from '../classes/hero';
 @Injectable()
 export class HeroService {	
 
+	private headers = new Headers({'Content-Type': 'application/json'});
+
 	private heroURL = 'http://localhost:8080/hero'
 	private heroesURL = 'http://localhost:8080/heroes'
 	
@@ -18,7 +20,8 @@ export class HeroService {
 	getHero(id: number): Promise<Hero> {
 	//	return this.getData().then(heroes => heroes.find(hero => hero.id === id));
 		const url = `${this.heroURL}/${id}`;
-		return this.http.get(url)
+		return this.http
+			.get(url)
 			.toPromise()
 			.then(response => response.json() as Hero)
 			.catch(this.onError);
@@ -27,7 +30,9 @@ export class HeroService {
 	//Fetch an array of items
 	//http://learnangular2.com/es6/promises
 	getData(): Promise<Hero[]> {
-		return this.http.get(this.heroesURL)
+		const url = `${this.heroesURL}`;
+		return this.http
+			.get(url)
 			//A. Convert Observable to a Promise using this method
 			.toPromise()
 			//B. Get the JSON data from the API and cast it
@@ -48,6 +53,15 @@ export class HeroService {
 	  return new Promise(resolve => {
 	    setTimeout(() => resolve(this.getData()), 250);
 	  });
+	}
+	
+	update(hero:Hero): Promise<Hero> {
+		const url = `${this.heroesURL}/${hero.id}`;
+		return this.http
+			.put(url, JSON.stringify(hero), {headers: this.headers})
+			.toPromise()
+			.then(() => hero)
+			.catch(this.onError);
 	}
 	
 	//TODO: Make this better

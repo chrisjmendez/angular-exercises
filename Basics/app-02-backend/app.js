@@ -10,9 +10,14 @@ var users = require('./routes/users');
 
 var app = express();
 
+
+var cors = require('cors')
+
 app.locals.pretty = true;  
 // all environments
 app.set('port', process.env.PORT || 8080);
+// Set CORS http://stackoverflow.com/a/21622564
+app.use(cors({credentials: true, origin: true}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

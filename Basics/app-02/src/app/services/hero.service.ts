@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
+//Allows us to extend Observable with extra capabilities
 import 'rxjs/add/operator/toPromise';
 
 import { Hero } from '../classes/hero';
@@ -8,42 +9,48 @@ import { Hero } from '../classes/hero';
 @Injectable()
 export class HeroService {	
 
-	private url = 'http://localhost:8080/heroes'
+	private heroURL = 'http://localhost:8080/hero'
+	private heroesURL = 'http://localhost:8080/heroes'
 	
     constructor(private http: Http) { }	
-	
+
+	//Fetch a single item 
 	getHero(id: number): Promise<Hero> {
-		return this.getData().then(heroes => heroes.find(hero => hero.id === id));
+	//	return this.getData().then(heroes => heroes.find(hero => hero.id === id));
+		const url = `${this.heroURL}/${id}`;
+		return this.http.get(url)
+			.toPromise()
+			.then(response => response.json() as Hero)
+			.catch(this.onError);
 	}
 	
-	//Old Method
-	// getData(): Promise<Hero[]> {
-	// 	//Use Promise to get mock data, then return an array of mock data.
-	// 	return Promise.resolve(HEROES);
-	// }
-	
-	//New Method 
-	// http://learnangular2.com/es6/promises
+	//Fetch an array of items
+	//http://learnangular2.com/es6/promises
 	getData(): Promise<Hero[]> {
-		return this.http.get(this.url)
-		.toPromise()
-		.then((response) => {
-			return response.json() as Hero[];
-		})
-		.then((data) => {
-			//console.log("!", data[0])
-			return data
-		})
-		.catch(this.onError);
+		return this.http.get(this.heroesURL)
+			//A. Convert Observable to a Promise using this method
+			.toPromise()
+			//B. Get the JSON data from the API and cast it
+			.then((response) => {
+				return response.json() as Hero[];
+			})
+			//C. Return the actual JSON data
+			.then((data) => {
+				//console.log("!", data[0])
+				return data
+			})
+			//D. Catch any errors
+			.catch(this.onError);
 	}
 	
+	//Fetch an array of items with a simulated delay
 	getDataSlowly(): Promise<Hero[]> {
 	  return new Promise(resolve => {
-	    // Simulate server latency with 2 second delay
-	    setTimeout(() => resolve(this.getData()), 500);
+	    setTimeout(() => resolve(this.getData()), 250);
 	  });
 	}
 	
+	//TODO: Make this better
 	private onError(error:any): Promise<any> {
 		console.error("An error occured", error);
 		return Promise.reject(error.message || error);

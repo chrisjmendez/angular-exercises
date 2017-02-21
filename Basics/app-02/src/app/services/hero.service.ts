@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+
 import 'rxjs/add/operator/toPromise';
 
 import { Hero } from '../classes/hero';
@@ -8,6 +9,8 @@ import { Hero } from '../classes/hero';
 export class HeroService {	
 
 	private url = 'http://localhost:8080/heroes'
+	
+    constructor(private http: Http) { }	
 	
 	getHero(id: number): Promise<Hero> {
 		return this.getData().then(heroes => heroes.find(hero => hero.id === id));
@@ -19,12 +22,19 @@ export class HeroService {
 	// 	return Promise.resolve(HEROES);
 	// }
 	
-	//New Method
+	//New Method 
+	// http://learnangular2.com/es6/promises
 	getData(): Promise<Hero[]> {
 		return this.http.get(this.url)
-			.toPromise()
-			.then(response => response.json().data as Hero[])
-			.catch(this.onError);
+		.toPromise()
+		.then((response) => {
+			return response.json() as Hero[];
+		})
+		.then((data) => {
+			//console.log("!", data[0])
+			return data
+		})
+		.catch(this.onError);
 	}
 	
 	getDataSlowly(): Promise<Hero[]> {

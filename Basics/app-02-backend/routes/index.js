@@ -26,18 +26,24 @@ router.get('/', function(req, res, next) {
 	res.render('index', { title: 'Express' });
 });
 
-router.get('/hero/:id', function(req, res, next) {
+router.get('/hero/:id?', function(req, res, next) {
 	var id = req.params.id;
-	var result = _.find(data, function(shift){ return shift.id ==  id });	
-	if(!_.isUndefined(result)){
-		res.json(result)
-	} else {
-		res.json({ success: false, message: "Sorry, data not available."})
-	}
+	var result = find(id);
+
+	if(!_.isUndefined(result)) res.json(result)
+	else res.json({ success: false, message: "Sorry, data not available."})
 });
 
-router.get('/heroes', function(req, res, next) {
-	res.json(data)
+router.get('/heroes/:id?', function(req, res, next) {
+	var id = req.params.id;
+	var result = find(id);
+
+	if(!_.isUndefined(result)) res.json(result)
+	else res.json(data)
 });
+
+function find(id){
+	return _.find(data, function(shift){ return shift.id ==  id });
+}
 
 module.exports = router;

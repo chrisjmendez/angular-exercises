@@ -12,6 +12,7 @@ import { HeroService } from '../services/hero.service';
 	templateUrl: './dashboard.component.html',
 	styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
 	//D. Define a array property

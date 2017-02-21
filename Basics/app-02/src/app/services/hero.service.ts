@@ -18,7 +18,7 @@ export class HeroService {
 	getDataSlowly(): Promise<Hero[]> {
 	  return new Promise(resolve => {
 	    // Simulate server latency with 2 second delay
-	    setTimeout(() => resolve(this.getData()), 2000);
+	    setTimeout(() => resolve(this.getData()), 500);
 	  });
 	}
 }

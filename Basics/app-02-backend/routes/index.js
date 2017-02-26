@@ -2,11 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 var _ = require('lodash');
-
-// Load method categories. 
-var array = require('lodash/array');
-var object = require('lodash/fp/object');
- 
  
 var data = [
 	{ id: 11, name: 'Mr. Nice' },
@@ -23,47 +18,49 @@ var data = [
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Express' });
+	res.render('index', { title: 'Angular 2 Example' });
 });
+
 
 router.get('/hero/:id?', function(req, res, next) {
 	var id = req.params.id;
-	var result = find(id);
+	var result = _.find(data, function(obj){ return obj.id == id });
 
-	if(!_.isUndefined(result)) res.json(result)
-	else res.json({ success: false, message: "Sorry, data not available."})
+	if(result){
+		res.json(result)
+	} else {
+		res.json({ success: false, message: "Sorry, data not available."});
+	}
 });
+
 
 router.put('/hero/:id?', function(req, res, next) {
-	var id = req.params.id;
-	var result = find(id);
-	//Find the match with the data array
-	var indexOf = _.findIndex(data, function(shift){ 
-		return shift.id == result.id;
-	});
-	//If a match is found, then update the data array
-	if( indexOf >= 0 ){
-		var newName = req.body.name
-		data[indexOf].name = newName
-		var newResult = data[indexOf]
+	var newName = req.body.name
+	var id      = req.params.id;
+	//If a match exists, get the index
+	var objIndex = _.findIndex(data, function(obj){ return obj.id == id });
+	//If a match was found, then update the data
+	var result = ( objIndex >= 0 ) ? data[objIndex].name = newName : null;
+	
+	if(result){
+		res.json(result)
+	} else {
+		res.json({ success: false, message: "Sorry, data not available."})		
 	}
-
-	if(!_.isUndefined(newResult)){
-		res.json(newResult)
-	}
-	else res.json({ success: false, message: "Sorry, data not available."})
 });
+
 
 router.get('/heroes/:id?', function(req, res, next) {
 	var id = req.params.id;
-	var result = find(id);
 
-	if(!_.isUndefined(result)) res.json(result)
-	else res.json(data)
+	var result = _.find(data, function(obj){ return obj.id == id });
+	
+	if(result){
+		res.json(result)	
+	} else {
+		res.json(data)
+	}
 });
 
-function find(id){
-	return _.find(data, function(shift){ return shift.id == id });
-}
 
 module.exports = router;

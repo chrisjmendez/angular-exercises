@@ -16,9 +16,9 @@ export class HeroService {
 	
     constructor(private http: Http) { }	
 
-	//Fetch a single item 
+	//Fetch a SINGLE Hero
 	getHero(id: number): Promise<Hero> {
-	//	return this.getData().then(heroes => heroes.find(hero => hero.id === id));
+	//	return this. getHeros().then(heroes => heroes.find(hero => hero.id === id));
 		const url = `${this.heroURL}/${id}`;
 		return this.http
 			.get(url)
@@ -27,9 +27,9 @@ export class HeroService {
 			.catch(this.onError);
 	}
 	
-	//Fetch an array of items
+	//Fetch an ARRAY of Heros
 	//http://learnangular2.com/es6/promises
-	getData(): Promise<Hero[]> {
+	 getHeros(): Promise<Hero[]> {
 		const url = `${this.heroesURL}`;
 		return this.http
 			.get(url)
@@ -51,14 +51,16 @@ export class HeroService {
 	//Fetch an array of items with a simulated delay
 	getDataSlowly(): Promise<Hero[]> {
 	  return new Promise(resolve => {
-	    setTimeout(() => resolve(this.getData()), 250);
+	    setTimeout(() => resolve(this. getHeros()), 250);
 	  });
 	}
 	
 	update(hero:Hero): Promise<Hero> {
-		const url = `${this.heroesURL}/${hero.id}`;
+		const url = `${this.heroURL}/${hero.id}`;
+		var data = JSON.stringify(hero)
+		//console.log(data);
 		return this.http
-			.put(url, JSON.stringify(hero), {headers: this.headers})
+			.put(url, data, {headers: this.headers})
 			.toPromise()
 			.then(() => hero)
 			.catch(this.onError);

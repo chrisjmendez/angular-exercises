@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var _ = require('lodash');
- 
+var _ = require('lodash'); 
+
 var data = [
 	{ id: 11, name: 'Mr. Nice' },
 	{ id: 12, name: 'Narco' },
@@ -56,20 +56,27 @@ router.post('/', function(req, res, next) {
 	 	
 	var save = _.spread(function(obj){ return data.push(obj) });
 		save([newObj]);
-		
+
 	console.log(data);
 	res.json(data);
 });
 
 router.delete('/:id?', function(req, res, next) {
 	var id = req.params.id;
-	var objIndex = _.findIndex(data, function(obj){ return obj.id == id });
-	console.log(objIndex, data.length);
+	var objIndex = _.findIndex(data, function(obj){ 
+		if(obj.id == id){
+			console.log(obj.id, id)
+		}
+		return obj.id == id 
+	});
+
 	//If an element is found
-	if(objIndex){
+	if(objIndex >= 0){
 		//Delete element
-		data.splice(objIndex, 1);
-		console.log(data.length);
+		console.log(objIndex, data[objIndex]);
+		var arr = data.splice(objIndex, 1);	
+		//console.log(arr, arr.length, data.length);
+		res.json(data)
 	}
 });
 

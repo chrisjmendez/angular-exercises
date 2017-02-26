@@ -56,13 +56,18 @@ export class HeroService {
 
 	/** ** ** ** ** ** ** ** ** ** ** ** ** 
 	GET an ARRAY of Heroes with an simulated delay
+	Get an array of Heroes
 	*/
 	getDataSlowly(): Promise<Hero[]> {
+		const ms = this.convertSecsToMillisecs(0.1);
 		return new Promise(resolve => {
-			setTimeout(() => resolve(this. getHeros()), 250);
+			setTimeout(() => resolve(this. getHeros()), ms);
 		});
 	}
-
+	
+	convertSecsToMillisecs(secs:number):number{
+		return secs * 1000;
+	}
 
 	/** ** ** ** ** ** ** ** ** ** ** ** ** 
 	Create a new Hero
@@ -89,6 +94,19 @@ export class HeroService {
 		.catch(this.onError);
 	}
 	
+
+	/** ** ** ** ** ** ** ** ** ** ** ** ** 
+	Delete a Hero
+	*/
+	delete(id:number): Promise<void> {
+		const url = `${this.heroURL}/${id}`;
+		console.log(url);
+		return this.http
+		.delete(url, { headers: this.headers })
+		.toPromise()
+		.then(() => null)
+		.catch(this.onError);
+	}
 	
 	/** ** ** ** ** ** ** ** ** ** ** ** ** 
 	Handle Error

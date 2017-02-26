@@ -43,9 +43,20 @@ export class HeroesComponent implements OnInit {
 		//C. Create a name
 		this.heroService.create(name)
 			.then(hero => {
+				//TODO: Fix this. It's not updating the new hero
 				this.heroes.push(hero);
 				this.selectedHero = null;
 			});
+	}
+	
+	delete(hero: Hero):void{
+		//console.log(hero.id);
+		this.heroService
+		.delete(hero.id)
+		.then(() => {
+			this.heroes = this.heroes.filter(h => h !== hero);
+			if(this.selectedHero === hero){ this.selectedHero = null; }
+		});
 	}
 	
 	onSelect(hero: Hero):void {

@@ -34,6 +34,26 @@ router.get('/hero/:id?', function(req, res, next) {
 	else res.json({ success: false, message: "Sorry, data not available."})
 });
 
+router.put('/hero/:id?', function(req, res, next) {
+	var id = req.params.id;
+	var result = find(id);
+	//Find the match with the data array
+	var indexOf = _.findIndex(data, function(shift){ 
+		return shift.id == result.id;
+	});
+	//If a match is found, then update the data array
+	if( indexOf >= 0 ){
+		var newName = req.body.name
+		data[indexOf].name = newName
+		var newResult = data[indexOf]
+	}
+
+	if(!_.isUndefined(newResult)){
+		res.json(newResult)
+	}
+	else res.json({ success: false, message: "Sorry, data not available."})
+});
+
 router.get('/heroes/:id?', function(req, res, next) {
 	var id = req.params.id;
 	var result = find(id);
@@ -43,7 +63,7 @@ router.get('/heroes/:id?', function(req, res, next) {
 });
 
 function find(id){
-	return _.find(data, function(shift){ return shift.id ==  id });
+	return _.find(data, function(shift){ return shift.id == id });
 }
 
 module.exports = router;

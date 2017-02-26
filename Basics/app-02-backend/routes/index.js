@@ -50,6 +50,20 @@ router.put('/hero/:id?', function(req, res, next) {
 });
 
 
+router.post('/heroes', function(req, res, next) {
+	var lastObj = data.length - 1;
+	var lastId  = data[lastObj].id;
+	var newId   = lastId += 1;
+	var newName = req.body.name;
+	var newObj  = { id: newId, name: newName };
+	 	
+	var save = _.spread(function(obj){ return data.push(obj) });
+	save([newObj]);
+	console.log(data);
+	res.json(data);
+});
+
+
 router.get('/heroes/:id?', function(req, res, next) {
 	var id = req.params.id;
 

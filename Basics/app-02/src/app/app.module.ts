@@ -16,6 +16,7 @@ import { DashboardComponent }  from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent }     from './heroes/heroes.component';
 import { HeroService }         from './services/hero.service';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 @NgModule({
 	imports: [
@@ -29,7 +30,8 @@ import { HeroService }         from './services/hero.service';
 		AppComponent,
 		HeroesComponent,
 		HeroDetailComponent,
-		DashboardComponent
+		DashboardComponent,
+		HeroSearchComponent
 	],
 	//Singleton Providers
 	providers: [HeroService],

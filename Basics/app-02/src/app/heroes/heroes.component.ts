@@ -6,9 +6,9 @@ import { Hero } from '../classes/hero';
 import { HeroService } from '../services/hero.service';
 
 @Component({
-  selector: 'heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css'],
+	selector: 'heroes',
+	templateUrl: './heroes.component.html',
+	styleUrls: ['./heroes.component.css'],
 	//Create a fresh instance of HeroService at the constructor()
 	providers: [HeroService]
 })
@@ -33,6 +33,19 @@ export class HeroesComponent implements OnInit {
 	getHeroes():void {
 		//Once data is retreived, assign it to "heroes"
 		this.heroService.getDataSlowly().then(heroes => this.heroes = heroes);
+	}
+	
+	add(name: string): void{
+		//A. Remove any whitespace
+		name = name.trim();
+		//B. Validation
+		if(!name){ return; }
+		//C. Create a name
+		this.heroService.create(name)
+			.then(hero => {
+				this.heroes.push(hero);
+				this.selectedHero = null;
+			});
 	}
 	
 	onSelect(hero: Hero):void {

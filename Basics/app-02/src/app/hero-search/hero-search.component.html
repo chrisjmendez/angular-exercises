@@ -1,3 +1,15 @@
-<p>
-  hero-search works!
-</p>
+<!-- 
+	Title: Simple search box and a list of matching results 
+	Description: Hero's is now an Observable of hero arrays, not just an array.
+		ngFor can't handle an Observable until we flow it through the ASYNC pipe.
+		The async pipe subscribes to the Observable and produces the array of heroes for ngFor
+-->
+<div id="search-component">
+	<h4>Hero Search</h4>
+	<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+	<div>
+		<div *ngFor="let hero of heroes | async" (click)="gotoDetail(hero)" class="search-result">
+			{{hero.name}}
+		</div>
+	</div>
+</div>

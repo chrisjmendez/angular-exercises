@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit {
 	
-	title = 'Tour of Heros';
+	title = 'My Second Angular App';
 	
 	constructor() { }
 	

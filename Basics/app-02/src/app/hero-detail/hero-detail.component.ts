@@ -33,7 +33,8 @@ export class HeroDetailComponent implements OnInit {
   ngOnInit() {
    this.route.params
 	  //maps the id in the observable route parameters to a new Observable
-	  //If the user re-navigates to this component while a getHero request is still inflight, switchMap cancels that old request before calling HeroService.getHero again.
+	  // If the user re-navigates to this component while a getHero request is still inflight, 
+    // switchMap cancels that old request before calling HeroService.getHero again.
       .switchMap((params: Params) => this.heroService.getHero(+params['id']))
       .subscribe(hero => this.hero = hero);
   }

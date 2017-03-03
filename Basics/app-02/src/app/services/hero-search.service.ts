@@ -23,6 +23,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { Observable }     from 'rxjs/Observable';
+//This is the map operator 
 import 'rxjs/add/operator/map';
 
 import { Hero } from '../classes/hero';
@@ -38,6 +39,11 @@ export class HeroSearchService {
 			.get(`app/heros/?name=${term}`)
 			//B. Observable was chained to MAP to help extract heroes from the response 
 			//   We must do this otherwise we can't even get the data from the raw response.
-			.map(response => response.json() as Hero[]);
+			.map(response => response.json() as Hero[])
+	}
+
+	private onError(error:any): Observable<any> {
+		console.error("An error occured", error);
+		return Observable.throw(error.message || error);
 	}
 }

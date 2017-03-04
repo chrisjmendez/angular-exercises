@@ -1,6 +1,7 @@
 <ul class="list-group">
-	<li *ngFor="let hero of heroes" class="list-group-item list-group-item-action" 
+	<li *ngFor="let hero of heroes; let i = index; trackBy: trackByFn;" class="list-group-item list-group-item-action" 
 		(click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+		<span>{{i}}: </span>
 		<span class="badge badge-default badge-pill">{{hero.id}}</span>
 		<span>{{hero.name}}</span>
 		<button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>

@@ -3,9 +3,10 @@ Description:
 
 Promises are very useful but they're not great in situations where
 a user makes a stream (or sequence) of events such as: 
-• making the request
-• cancelling the request
-• invoking a new request before the first one is finished.
+
+• Making the request
+• Cancelling the request
+• Invoking a new request before the first one is finished.
 
 Diagram: 
 request => cancel => new request
@@ -18,12 +19,14 @@ than Promises.
 Observables provides a series of operators –to asynchronous data– that allow 
 you to manipulate things as they come down that stream. You can map them, 
 you can catch errors, etc.
+
 */
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { Observable }     from 'rxjs/Observable';
-//This is the map operator 
+import { Observable }  from 'rxjs/Observable';
+
+//Observables work with operators such as maps
 import 'rxjs/add/operator/map';
 
 import { Hero } from '../classes/hero';

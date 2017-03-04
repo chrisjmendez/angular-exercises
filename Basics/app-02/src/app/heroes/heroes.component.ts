@@ -25,7 +25,7 @@ export class HeroesComponent implements OnInit {
 		this.getHeroes();
 	}
 	
-	//THis is a handler that will navigate the user to a template
+	//This is an event handler that will navigate the user to an item/detail template
 	gotoDetail():void {
 		this.router.navigate(['/detail', this.selectedHero.id]);
 	}
@@ -35,16 +35,26 @@ export class HeroesComponent implements OnInit {
 		this.heroService.getDataSlowly().then(heroes => this.heroes = heroes);
 	}
 	
+	// This allows for preformance improvements by list rendering by tracking a unique ID
+	// https://coryrylan.com/blog/angular-ng-for-syntax
+	// https://netbasal.com/angular-2-improve-performance-with-trackby-cc147b5104e5#.84ucrtf14
+	trackByFn(index, item):void {
+	  //console.log("trackByFn:", item.id);
+	  return item.id;
+	}
+	
 	add(name: string): void{
 		//A. Remove any whitespace
 		name = name.trim();
-		//B. Validation
+		//B. Validate that there's a name
 		if(!name){ return; }
 		//C. Create a name
 		this.heroService.create(name)
 			.then(hero => {
 				//TODO: Fix this. It's not updating the new hero
+				console.log("From the Web Server:", hero);
 				this.heroes.push(hero);
+				//console.log(this.heroes);
 				this.selectedHero = null;
 			});
 	}

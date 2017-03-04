@@ -14,6 +14,8 @@ export class HeroService {
 	private heroURL   = 'http://localhost:8080/hero'
 	private heroesURL = 'http://localhost:8080/heroes'
 	
+	private secsOfDelay = 0.2;
+	
 	constructor(private http: Http) { }	
 
 	/** ** ** ** ** ** ** ** ** ** ** ** ** 
@@ -59,9 +61,9 @@ export class HeroService {
 	Get an array of Heroes
 	*/
 	getDataSlowly(): Promise<Hero[]> {
-		const ms = this.convertSecsToMillisecs(0.1);
+		const ms = this.convertSecsToMillisecs(this.secsOfDelay);
 		return new Promise(resolve => {
-			setTimeout(() => resolve(this. getHeros()), ms);
+			setTimeout(() => resolve(this.getHeros()), ms);
 		});
 	}
 	
@@ -74,7 +76,7 @@ export class HeroService {
 	*/	
 	create(name:String): Promise<Hero> {
 		return this.http
-		.post(this.heroesURL, JSON.stringify({name: name}), {headers: this.headers})
+		.post(this.heroesURL, JSON.stringify({name: name}), { headers: this.headers })
 		.toPromise()
 		.then(res => res.json())
 		.catch(this.onError);

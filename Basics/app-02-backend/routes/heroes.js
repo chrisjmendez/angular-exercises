@@ -10,7 +10,6 @@ var data = require('../public/javascripts/json/Model');
 router.get('/:id?', function(req, res, next) {
 	var id = req.params.id;
 	var result = _.find(data, function(obj){ return obj.id == id });
-
 	if(result){
 		res.json(result);
 	} else {
@@ -37,16 +36,19 @@ router.put('/:id?', function(req, res, next) {
 
 
 router.post('/', function(req, res, next) {
-	var lastObj = data.length - 1;
-	var lastId  = data[lastObj].id;
-	var newId   = lastId += 1;
-	var newName = req.body.name;
-	var newObj  = { id: newId, name: newName };
-	 	
-	var save = _.spread(function(obj){ return data.push(obj) });
-		save([newObj]);
+	var newName    = req.body.name;
+	var lastObjIdx = (data.length > 0) ? data.length - 1 : 0;
 
-	console.log(data);
+	//TODO - Clean this up, it's a disaster in thinking.
+	if(lastObjIdx <= 0){
+		var newObj = { id: 0, name: newName };
+	} else {
+		var lastId = (data[lastObjIdx].id);
+		var newId  = lastId += 1;
+		var newObj = { id: newId, name: newName };
+	}
+	data.push(newObj)
+
 	res.json(data);
 });
 

@@ -39,7 +39,7 @@ export class HeroesComponent implements OnInit {
 	// https://coryrylan.com/blog/angular-ng-for-syntax
 	// https://netbasal.com/angular-2-improve-performance-with-trackby-cc147b5104e5#.84ucrtf14
 	trackByFn(index, item):void {
-	  //console.log("trackByFn:", item.id);
+	  console.log("trackByFn:", item.length);
 	  return item.id;
 	}
 	

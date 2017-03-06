@@ -39,6 +39,7 @@ export class HeroSearchService {
 	search(term:string): Observable<Hero[]>{
 		//A. This returns the Observable from the GET method
 		return this.http
+			//TODO: Adjust app02-backend to handle this request
 			.get(`app/heros/?name=${term}`)
 			//B. Observable was chained to MAP to help extract heroes from the response 
 			//   We must do this otherwise we can't even get the data from the raw response.

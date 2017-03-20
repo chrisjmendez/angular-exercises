@@ -33,14 +33,17 @@ import { Hero } from '../classes/hero';
 
 @Injectable()
 export class HeroSearchService {
+	
+	private serverURL = "http://localhost:8080/heroes/?name";
 
 	constructor(private http: Http) { }
 
 	search(term:string): Observable<Hero[]>{
+		console.log(term)
 		//A. This returns the Observable from the GET method
 		return this.http
 			//TODO: Adjust app02-backend to handle this request
-			.get(`app/heros/?name=${term}`)
+			.get(`${this.serverURL}=${term}`)
 			//B. Observable was chained to MAP to help extract heroes from the response 
 			//   We must do this otherwise we can't even get the data from the raw response.
 			.map(response => response.json() as Hero[])

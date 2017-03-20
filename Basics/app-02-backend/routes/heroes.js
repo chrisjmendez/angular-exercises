@@ -9,6 +9,9 @@ var data = require('../public/javascripts/json/Model');
 
 router.get('/:id?', function(req, res, next) {
 	var id = req.params.id;
+	var search = req.params.name;
+	
+	console.log("search:", search);
 	var result = _.find(data, function(obj){ return obj.id == id });
 	if(result){
 		res.json(result);

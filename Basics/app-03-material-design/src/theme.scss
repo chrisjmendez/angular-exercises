@@ -1,0 +1,35 @@
+/*
+Themes consist of palettes. Those palettes are:
+
+1) Primary: Used across all screens and components
+2) Accent: Used for floating action button and interactive elements
+3) Warn: Used to convey error
+4) Foreground: used for text and icons
+5) Background: used for element backgrounds
+
+*/
+//@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~@angular/material/theming';
+
+//Core
+@include mat-core();
+
+//Primary
+$app-primary: mat-palette($mat-indigo);
+//Accent
+$app-accent:  mat-palette($mat-pink);
+//Theme package
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@include angular-material-theme($app-theme);
+
+
+.dark-theme {
+  $dark-primary: mat-palette($mat-blue-grey);
+  $dark-accent:  mat-palette($mat-amber);
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
+  @include angular-material-theme($dark-theme);
+
+  background-color: #424242;
+}

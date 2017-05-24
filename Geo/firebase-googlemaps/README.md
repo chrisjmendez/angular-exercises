@@ -14,6 +14,35 @@
 - Start the development server using ```ng serve```.
 
 
+Create a .env file
+```
+vi /environments/.env
+```
+
+Paste your unique keys
+```
+export const environment = {
+  production: false,
+  GOOGLE_MAPS_API_KEY: "xxx",
+  FIREBASE_CONFIG: {
+    apiKey: "xxx",
+    authDomain: "xxx",
+    databaseURL: "xxx",
+    projectId: "xxx",
+    storageBucket: "fxxx",
+    messagingSenderId: "xxxx"
+  }
+};
+```
+
+
+
+Run your local server 
+```
+ng serve --env=local
+```
+
+
 ## Resources Used
 
 - [Angular 4 RC 5.0](http://angular.io)

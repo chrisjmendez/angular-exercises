@@ -32,6 +32,7 @@ import 'rxjs/add/operator/do';
 // Mobile touch integration
 import 'hammerjs';
 
+//This requires you to create /environments/.env file and run as ng serve --env=local
 console.log(environment.FIREBASE_CONFIG, environment["GOOGLE_MAPS_API_KEY"]);
 
 // Applicatin Specific

@@ -1,4 +1,4 @@
-# Heros
+# Heroes
 
 Based on this [Angular Tutorial](https://angular.io/docs/ts/latest/tutorial/toh-pt4.html)
 
@@ -10,7 +10,6 @@ This examples shows you how to:
 3. Create a forLoop within the Angular framework
 4. Create models
 5. Create a service that simulates a request to a server
-6. 
 
 
 ---

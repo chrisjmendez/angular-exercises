@@ -32,6 +32,8 @@ import 'rxjs/add/operator/do';
 // Mobile touch integration
 import 'hammerjs';
 
+console.log(environment.FIREBASE_CONFIG, environment["GOOGLE_MAPS_API_KEY"]);
+
 // Applicatin Specific
 import { HomeComponent } from './home/home.component';
 

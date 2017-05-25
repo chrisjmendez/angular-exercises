@@ -1,4 +1,12 @@
-# Anguar 4 (RC 5.0) + Firebase + Google Maps + Google Mateial Design
+# AnguarFire + Maps
+
+## Tech Stack
+
+- Angular 4 (RC 5.0)
+- Firebase
+- Google Material Design
+- Google Maps
+
 
 ## Requirements
 
@@ -12,35 +20,37 @@
 - Update [googlemaps.config.ts](https://github.com/chrisjmendez/angular-exercises/blob/master/Geo/firebase-googlemaps/src/environments/googlemaps.config.ts) with your new Google Maps API key.
 - Install 3rd party libraries using ```npm install```.
 - Start the development server using ```ng serve```.
+- Create a .env file
+ 
+ ```
+ vi /environments/.env
+ ```
+- Paste your unique keys
+
+ ```
+ export const environment = {
+     production: false,
+     GOOGLE_MAPS_API_KEY: "xxx",
+     FIREBASE_CONFIG: {
+       apiKey:      "xxx",
+       authDomain:  "xxx",
+       databaseURL: "xxx",
+       projectId:   "xxx",
+       storageBucket: "fxxx",
+       messagingSenderId: "xxxx"
+     }
+ };
+ ```
+- Run your local server 
+
+ ```
+ ng serve --env=local
+ ```
 
 
-Create a .env file
-```
-vi /environments/.env
-```
 
-Paste your unique keys
-```
-export const environment = {
-  production: false,
-  GOOGLE_MAPS_API_KEY: "xxx",
-  FIREBASE_CONFIG: {
-    apiKey: "xxx",
-    authDomain: "xxx",
-    databaseURL: "xxx",
-    projectId: "xxx",
-    storageBucket: "fxxx",
-    messagingSenderId: "xxxx"
-  }
-};
-```
+---
 
-
-
-Run your local server 
-```
-ng serve --env=local
-```
 
 
 ## Resources Used
@@ -48,4 +58,6 @@ ng serve --env=local
 - [Angular 4 RC 5.0](http://angular.io)
 - [Firebase](http://firebase.google.com)
 - [Google Maps](http://maps.google.com)
+- [Angular Google Maps](https://github.com/SebastianM/angular-google-maps/blob/master/CHANGELOG.md)
 - [Angular Material](https://material.angular.io/)
+- [Angular 2 Event Binding](http://lishman.io/angular-2-event-binding)

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -32,11 +33,10 @@ import 'rxjs/add/operator/do';
 // Mobile touch integration
 import 'hammerjs';
 
-//This requires you to create /environments/.env file and run as ng serve --env=local
-console.log(environment.FIREBASE_CONFIG, environment["GOOGLE_MAPS_API_KEY"]);
-
 // Applicatin Specific
 import { HomeComponent } from './home/home.component';
+
+console.log( environment.FIREBASE_CONFIG, environment.GOOGLE_MAPS_API_KEY );
 
 const routes:Routes = [
   {
@@ -59,7 +59,7 @@ const routes:Routes = [
     FormsModule,
     HttpModule,
   	// imports firebase/app needed for everything
-    AngularFireModule.initializeApp(firebaseConfig, firebaseConfig.projectId),
+    AngularFireModule.initializeApp(environment.FIREBASE_CONFIG, environment.FIREBASE_CONFIG.projectId),
 	  // imports firebase/database, only needed for database features
     AngularFireDatabaseModule,
 	  // imports firebase/auth, only needed for auth features
@@ -71,7 +71,7 @@ const routes:Routes = [
     // Forms
     ReactiveFormsModule,
     // Maps
-    AgmCoreModule.forRoot({ apiKey: googleMapsConfig.apiKey }),
+    AgmCoreModule.forRoot({ apiKey: environment.GOOGLE_MAPS_API_KEY }),
     // Routing
     RouterModule.forRoot(routes)
   ],

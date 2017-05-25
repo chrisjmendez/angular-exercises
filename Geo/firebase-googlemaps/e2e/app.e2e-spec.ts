@@ -1,10 +1,10 @@
-import { BusTrackerPage } from './app.po';
+import { AngularFireMapsPage } from './app.po';
 
-describe('bus-tracker App', () => {
-  let page: BusTrackerPage;
+describe('angularfire-maps', () => {
+  let page: AngularFireMapsPage;
 
   beforeEach(() => {
-    page = new BusTrackerPage();
+    page = new AngularFireMapsPage();
   });
 
   it('should display message saying app works', () => {

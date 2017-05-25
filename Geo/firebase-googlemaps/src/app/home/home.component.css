@@ -1,3 +1,12 @@
-.sebm-google-map-container {
-  height: 300px;
+.example-card {
+  width: 400px;
+}
+
+.example-header-image {
+  background-image: url('http://placehold.it/60x60');
+  background-size: cover;
+}
+
+.agm-map-container-inner, .sebm-google-map-container {
+    height: 400px;
 }

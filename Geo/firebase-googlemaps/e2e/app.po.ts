@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class BusTrackerPage {
+export class AngularFireMapsPage {
   navigateTo() {
     return browser.get('/');
   }

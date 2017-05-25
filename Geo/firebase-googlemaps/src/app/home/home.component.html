@@ -1,7 +1,29 @@
-<p>
-  home works!
-</p>
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>AngularFire Maps</md-card-title>
+    <md-card-subtitle>
+      <i class="material-icons">location_on</i> {{lat}} | {{lng}}
+    </md-card-subtitle>
+  </md-card-header>
 
-<sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-</sebm-google-map>
+  <img md-card-image src="http://placehold.it/400x150">
+
+  <md-card-content>
+    <agm-map [latitude]="lat" [longitude]="lng" 
+    (mouseenter)="onMouseEnter($event)"
+    (mouseleave)="onMouseLeave($event)"
+    (mousemove)="onMouseMove($event)"
+    (click)="onMouseClick($event)"
+    on-click="onEvent($event)"
+    on-dblclick="onEvent($event)"
+    on-contextmenu="onEvent($event)">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button>Like</button>
+    <button md-button>Share</button>
+  </md-card-actions>
+</md-card>

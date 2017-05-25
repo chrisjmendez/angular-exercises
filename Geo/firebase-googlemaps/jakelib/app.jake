@@ -34,9 +34,7 @@ namespace('app', function () {
 	
 	desc('Serve app on localhost. Ex: jake app:serve');
 	task('serve', { async: true }, function(func) {	
-		var cmds = [
-			'ng serve'
-		];
+		var cmds = [ 'ng serve --env=local' ];
 		jake.exec(cmds, { printStdout: true });
 	});
 });

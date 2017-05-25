@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 
 // Firebase
 import { firebaseConfig } from "../environments/firebase.config";
+import { FirebaseService } from "./shared/services/firebase.service";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -76,7 +77,7 @@ const routes:Routes = [
     RouterModule.forRoot(routes)
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [],
+  providers: [ FirebaseService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

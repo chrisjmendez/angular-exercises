@@ -2,6 +2,8 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
 
+import { FirebaseService } from "../shared/services/firebase.service";
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,9 +18,10 @@ export class HomeComponent implements OnInit {
   lat: number = 51.673858;
   lng: number = 7.815982;
 
-  constructor() { }
+  constructor(private firebaseService:FirebaseService) { }
 
   ngOnInit() {
+    this.firebaseService.getAllLocations()
   }
   
   clickedMarker(label: string, index: number) {

@@ -36,6 +36,7 @@ import 'hammerjs';
 
 // Applicatin Specific
 import { HomeComponent } from './home/home.component';
+import { LocationTrackerDirective } from './location-tracker.directive';
 
 console.log( environment.FIREBASE_CONFIG, environment.GOOGLE_MAPS_API_KEY );
 
@@ -53,7 +54,8 @@ const routes:Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LocationTrackerDirective
   ],
   imports: [
     BrowserModule,

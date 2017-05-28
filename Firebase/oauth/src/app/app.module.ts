@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { RoutingModule }    from './routing/routing.module';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // Firebase Config Lives here
 import { environment } from '../environments/environment';
 
@@ -34,6 +36,7 @@ import { ResetComponent } from './shared/security/reset/reset.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

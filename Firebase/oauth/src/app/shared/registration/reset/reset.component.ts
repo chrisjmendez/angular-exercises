@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-reset',
+  selector: 'reset',
   templateUrl: './reset.component.html',
   styleUrls: ['./reset.component.css']
 })

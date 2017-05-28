@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AppComponent } from '../app.component';
-import { SignUpComponent } from '../shared/security/sign-up/sign-up.component';
-import { SignInComponent } from '../shared/security/sign-in/sign-in.component';
+
+import { SignUpComponent } from '../shared/registration/sign-up/sign-up.component';
+import { SignInComponent } from '../shared/registration/sign-in/sign-in.component';
+import { ResetComponent } from '../shared/registration/reset/reset.component';
 import { HomeComponent } from '../public/home/home.component';
 import { DashboardComponent } from '../private/dashboard/dashboard.component';
-import { ResetComponent } from '../shared/security/reset/reset.component';
 
 const routes: Routes = [
     //{ path: '', redirectTo: '/', pathMatch: 'full' },

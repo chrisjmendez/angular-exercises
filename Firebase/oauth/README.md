@@ -14,3 +14,5 @@ This app will allow you to:
 - [Bootstrap](https://ng-bootstrap.github.io/#/home)
 - [Firebase](http://firebase.google.com)
 - [Free Dashboard](https://startangular.com/product/sb-admin-bootstrap-4-angular-4/)
+- [Material Design Icons](https://materialdesignicons.com/tag/box)
+- [Angular Material](https://material.angular.io/components/component/icon)

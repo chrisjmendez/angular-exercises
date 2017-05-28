@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { Routes, RouterModule } from '@angular/router';
 import { RoutingModule }    from './routing/routing.module';
+
+// Services
+import { AuthService } from "./shared/security/auth.service"
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,11 +20,11 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './shared/security/sign-up/sign-up.component';
-import { SignInComponent } from './shared/security/sign-in/sign-in.component';
+import { SignUpComponent } from './shared/registration/sign-up/sign-up.component';
+import { SignInComponent } from './shared/registration/sign-in/sign-in.component';
 import { HomeComponent } from './public/home/home.component';
 import { DashboardComponent } from './private/dashboard/dashboard.component';
-import { ResetComponent } from './shared/security/reset/reset.component';
+import { ResetComponent } from './shared/registration/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +43,12 @@ import { ResetComponent } from './shared/security/reset/reset.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    ReactiveFormsModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

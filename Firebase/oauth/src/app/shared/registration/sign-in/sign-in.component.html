@@ -1,61 +1,58 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header card-header-icon" data-background-color="rose">
-                    <i class="material-icons">icon</i>
-                </div>
-                <div class="card-content">
-                    <h4 class="card-title">Login</h4>
 
-                    <form class="form-horizontal" autocomplete="off" novalidate [formGroup]="form">
-                        <div class="row">
-                            <label class="col-md-3 label-on-left">Email</label>
-                            <div class="col-md-9">
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                    <input type="email" required formControlName="email" placeholder="Enter Email" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3 label-on-left">Password</label>
-                            <div class="col-md-9">
-                                <div class="form-group label-floating is-empty">
-                                    <label class="control-label"></label>
-                                    <input type="password" required formControlName="password" placeholder="Password" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3"></label>
-                            <div class="col-md-9">
-                                <div class="checkbox form-horizontal-checkbox">
-                                    <label>
-                                        <div>{{ (user | async)?.uid }}</div>
-                                        <input type="checkbox" name="optionsCheckboxes"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-md-3"></label>
-                            <div class="col-md-9">
-                                <div class="form-group form-button">
-                                    <button type="submit" class="btn btn-fill btn-rose" [disabled]="!isValidEmail()" (click)="signIn();">Sign in</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+<div class="account-container">
+	
+	<div class="content clearfix">
+		
+		<form autocomplete="off" novalidate [formGroup]="form">
+		
+			<h1>Login</h1>		
+			
+			<div class="login-fields">
+				
+				<p>Please provide your details</p>
+				
+				<div class="field">
+					<label for="username">Username</label>
+					<!--<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />-->
+                    <input type="email" required formControlName="email" placeholder="Enter Email" class="form-control">
 
-                    <div (click)="signIn();">
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="password">Password:</label>
+					<!--<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>-->
+                    <input type="password" required formControlName="password" placeholder="Password" class="form-control">
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+					<label class="choice" for="Field">Keep me signed in</label>
+				</span>
+
+                <button type="submit" class="button btn btn-success btn-large" [disabled]="!isValidEmail()" (click)="signIn();">Sign in</button>
+
+				
+			</div> <!-- .actions -->
+			
+            <div (click)="signIn();">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                             <path fill="#000000" d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H15.5A3.5,3.5 0 0,0 12,8.5V11H10V14H12V21H15V14H18V11H15V9A1,1 0 0,1 16,8H18V5Z" />
                         </svg>
-                    </div>
-
-                </div>
             </div>
-        </div>
-    </div>
-</div>
+
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
+
+
+
+<div class="login-extra">
+	<a href="#">Reset Password</a>
+</div> <!-- /login-extra -->

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = "My First App";
+  title = "Examples";
   name  = "Baltazar";
   state = false;
   textColor = "black";
@@ -20,12 +20,13 @@ export class AppComponent {
   ];
 
   onClickHandler(){
+    console.log("onClickHandler");
     this.state = !this.state;
     //State is true
     if(this.state){
       this.textColor = "blue"
       this.state = true
-    } 
+    }
     //State is false
     else {
       this.textColor = "red";

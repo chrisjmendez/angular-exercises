@@ -4,7 +4,7 @@ import { Subscription } from "rxjs/Rx";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AuthService } from "../../security/auth.service"
+import { AuthService } from '../../security/auth.service'
 
 @Component({
   selector: 'sign-in',
